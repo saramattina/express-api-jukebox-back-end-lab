@@ -1,8 +1,9 @@
 import express from "express";
 import db from "./db/connection.js";
 import logger from "morgan";
-import petsRouter from "./routes/pets.js";
 import cors from "cors";
+
+import tracksRouter from "./routes/tracks.js";
 
 const app = express();
 
@@ -12,7 +13,8 @@ app.use(logger("dev"));
 // controls who can access db
 app.use(cors());
 
-app.use("/pets", petsRouter);
+
+app.use("/tracks", tracksRouter);
 
 db.on("connected", () => {
   console.clear();
